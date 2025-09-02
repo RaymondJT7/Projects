@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RaymondJT's Photograph Site</title>
+    <link rel="icon" type="image/png" href="WebFiles/Logo.png">
+    <link rel="stylesheet" href="RJT_Photography_Style_Sheet.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/scrollreveal"></script>
+
+
+    <style>
+
+        body{
+            background-color: rgb(184, 232, 227);
+        }
+
+        .parent-container{
+            display: flex;
+            height: 100vh;
+            color: white;
+            text-align: center;
+            position: relative;
+        }
+
+        .div1{
+            width: 50%;
+            padding: 10px;
+            background-image: url("WebFiles/Background_Images/Background1.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .div1 h2{
+            margin-top: 30%;
+        }
+
+        .div2{
+            width: 50%;
+            padding: 10px;
+            background-image: url("WebFiles/Background_Images/Background2.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .div2 h1{
+            margin-top: 32%;
+        }
+
+        .main-body{
+            text-align: center;
+            margin-top: 20%;
+        }
+
+        .main-body h1{
+            font-size: 3em;
+        }
+
+        .main-body h2{
+            font-size: 2em;
+        }
+
+        .main-body h3{
+            font-size: 1.5em;
+        }
+
+        .Photo-button1 {
+            display: block;
+            background: rgba(5, 159, 62, 0.64);
+            color: white;
+            padding: 12px 20px;
+            font-size: 1.2em;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: 0.3s;
+            text-align: center;
+            margin: 0 auto;
+            margin-top: 2%;
+            width: 40%;
+        }
+        .Photo-button1:hover {
+            background: rgb(34, 161, 81);
+        }
+
+        .Photo-button2 {
+            background: rgba(43, 27, 120, 0.558);
+            color: white;
+            padding: 12px 20px;
+            font-size: 1.2em;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: 0.3s;
+            text-align: center;
+            width: 200px;
+            margin-top: 5%;
+        }
+
+        .Photo-button2:hover {
+            background: rgb(43, 27, 120);
+        }
+
+        .view-portfolio-button {
+            display: inline-block;
+            padding: 12px 24px;
+            font-size: 16px;
+            color: #fff;
+            background-color: rgba(43, 27, 120, 0.558);
+            text-decoration: none;
+            border-radius: 6px;
+            position: relative;
+            transition: background-color 0.3s ease;
+            border: 2px solid rgb(43, 27, 120);
+            width: 200px;
+            text-align: center;
+            margin-top: 5%;
+        }
+
+        .view-portfolio-button::after {
+            content: '→';
+            font-size: 18px;
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            transition: right 0.3s ease;
+        }
+
+        .view-portfolio-button:hover {
+            background-color: rgb(43, 27, 120);
+        }
+
+        .view-portfolio-button:hover::after {
+            right: 16px;
+        }
+
+        .about-table{
+            width: 50%;
+        }
+
+        table, th, td{
+            border: solid 1px black;
+            padding: 2px;
+            margin: auto;
+        }
+
+        .image-container {  
+            flex: 1;
+            position: relative;
+            overflow: hidden;
+            transition: flex 0.5s ease, opacity 0.5s ease; 
+            padding: 10px;
+        }
+
+        .image {
+            width: 100%;    
+            height: 100%;   
+            object-fit: cover; 
+            transition: transform 0.5s ease; 
+        }
+        .image-container:hover .image {
+            transform: scale(1.1); 
+        }
+        .image-container:hover .overlay {
+            opacity: 0; 
+        }
+        .image-container:hover {   
+            flex: 3; 
+        }
+        .image-container:not(:hover) {  
+            flex: 2; 
+        }
+        
+        .text-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 3; 
+            color: white;
+            text-align: center;
+        }
+
+        .overlay {
+            position: absolute; 
+            top: 0;
+            left: 0;
+            width: 100%;    
+            height: 100%;   
+            z-index: 1; 
+            transition: opacity 0.5s ease; 
+        }   
+        .overlay.blue { 
+            background-color: rgba(43, 27, 120, 0.229);
+        }
+        .overlay.green {    
+            background-color: rgba(0, 81, 4, 0.175); 
+        }
+
+
+        @media (min-width: 600px) and (max-width: 1024px) {
+            .main-body{
+                margin-top: 50%;
+            }
+            .logo{
+                font-size: 20px;
+            }
+            .Photo-button{
+                width: 23%;
+            }
+        }
+
+        @media (max-width: 600px) { 
+            .header{
+                font-size: 0.8em;
+            }
+            .logo{
+                font-size: 19px;
+            }
+            .main-body{
+                margin-top: 75%;
+            }
+            .main-body h1{
+                font-size: 2.5em;
+            }
+            .main-body h2{
+                font-size: 1.5em;
+            }
+            .main-body h3{
+                font-size: 1em;
+            }
+            .Photo-button{
+                width: 50%;
+            }
+
+            .parent-container{
+                display: flex;
+                flex-direction: column;     /* Stack children containers vertically */
+                align-items: center;        /* Center them horizontally */
+                text-align: center;
+                margin-top: 25%;
+                height: 100vh; /* Full height of the viewport */
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <div class="header">
+        <div class="logo"><img src="WebFiles/Logo.png" alt="Website Logo" style="width: 20%;">Photography</div>
+        <ul class="nav">
+            <li><a href="RJT_Photography_Site.html">Home</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </div>
+
+    <div class="parent-container"> 
+        <div class="image-container">   
+            <img class="image" src="WebFiles/Background_Images/Background1.jpg" alt="Background Image 1">
+            <div class="overlay green"></div>
+            <div class="text-content">
+                <h2>Welcome to</h2>
+                <h1>RJT Photography</h1>
+                <h3>Capturing Moments, Creating Memories, One Shot At A Time</h3>
+                <a href="Photo_Page.php" class="Photo-button1">View Our Work</a>
+            </div>
+
+        </div>
+        <div class="image-container">     
+            <img class="image" src="WebFiles/Background_Images/Background2.jpg" alt="Background Image 2">   
+            <div class="overlay blue"></div> 
+            <div class="text-content">
+                <h1>RJT Photography Portfolio</h1>
+                <br>
+                <a href="Photo_Page.php" class="Photo-button2">Book A Session With Us</a>
+                <a href="#" class="view-portfolio-button">View Portfolio</a>
+            </div>    
+        </div>
+    </div>
+ 
+    <div class="section__container about__container" id="about">
+      <h2 class="section__header">WE CAPTURE THE MOMENTS</h2>
+      <p class="section__description">
+        At Capturer, we specialize in freezing those fleeting moments in time
+        that hold immense significance for you. With our passion for photography
+        and keen eye for detail, we transform ordinary moments into
+        extraordinary memories.
+      </p>
+      <p class="section__description">
+        Whether it's a milestone event, a candid portrait, or the breathtaking
+        beauty of nature, we strive to encapsulate the essence of every moment,
+        ensuring that your cherished memories last a lifetime. Trust us to
+        capture the magic of your life's journey, one frame at a time.
+      </p>
+      <img src="WebFiles/Logo.png" alt="logo"/>
+    </div>
+
+    <section class="section__container gallery__container" id="gallery">
+      <h2 class="section__header">~ GALLERY ~</h2>
+      <div class="gallery__grid">
+        <img src="WebFiles/Gallery_Photos/Image1.jpg" alt="gallery" />
+        <img src="WebFiles/Gallery_Photos/Image2.jpg" alt="gallery" />
+        <img src="WebFiles/Gallery_Photos/Image3.jpg" alt="gallery" />
+        <img src="WebFiles/Gallery_Photos/Image4.jpg" alt="gallery" />
+        <img src="WebFiles/Gallery_Photos/Image5.jpg" alt="gallery" />
+        <img src="WebFiles/Gallery_Photos/Image6.jpg" alt="gallery" />
+        <img src="WebFiles/Gallery_Photos/Image7.jpg" alt="gallery" />
+        <img src="WebFiles/Gallery_Photos/Image8.jpg" alt="gallery" />
+      </div>
+      <div class="gallery__btn">
+        <button class="btn">VIEW GALLERY</button>
+      </div>
+    </section>
+
+    <div class="section__container portfolio__container">
+      <h2 class="section__header">~ PORTFOLIO ~</h2>
+      <div class="portfolio__grid">
+        <div class="portfolio__card">
+          <img src="assets/portfolio-1.jpg" alt="portfolio" />
+          <div class="portfolio__content">
+            <button class="btn">VIEW PPORTFOLIO</button>
+          </div>
+        </div>
+        <div class="portfolio__card">
+          <img src="assets/portfolio-2.jpg" alt="portfolio" />
+          <div class="portfolio__content">
+            <button class="btn">VIEW PPORTFOLIO</button>
+          </div>
+        </div>
+        <div class="portfolio__card">
+          <img src="assets/portfolio-3.jpg" alt="portfolio" />
+          <div class="portfolio__content">
+            <button class="btn">VIEW PPORTFOLIO</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="service" id="services">
+      <div class="section__container service__container">
+        <h2 class="section__header">~ SERVICES ~</h2>
+        <p class="section__description">
+          At Capturer, we offer a range of professional photography services
+          tailored to meet your unique needs. With a commitment to excellence
+          and creativity, we strive to exceed your expectations, delivering
+          captivating visuals that tell your story with authenticity and
+          passion.
+        </p>
+        <div class="service__grid">
+          <div class="service__card">
+            <h4>Portrait Sessions</h4>
+            <p>
+              Our portrait sessions are designed to showcase your personality
+              and style in stunning imagery.
+            </p>
+          </div>
+          <div class="service__card">
+            <h4>Maternity Sessions</h4>
+            <p>
+              Embrace the beauty and miracle of new life with our maternity and
+              newborn photography sessions.
+            </p>
+          </div>
+          <div class="service__card">
+            <h4>Family Sessions</h4>
+            <p>
+              Cherish the bond of family with our custom-designed playful candid
+              moments and portrait sessions.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section__container instagram__container">
+      <h2 class="section__header">~ INSTAGRAM ~</h2>
+      <div class="instagram__flex">
+        <img src="assets/image-1.jpg" alt="instagram" />
+        <img src="assets/image-2.jpg" alt="instagram" />
+        <img src="assets/image-3.jpg" alt="instagram" />
+        <img src="assets/image-4.jpg" alt="instagram" />
+        <img src="assets/image-5.jpg" alt="instagram" />
+        <img src="assets/image-6.jpg" alt="instagram" />
+        <img src="assets/image-7.jpg" alt="instagram" />
+        <img src="assets/image-8.jpg" alt="instagram" />
+      </div>
+    </section>
+
+    <footer class="footer">
+
+        <div class="container">
+
+          <div class="footer-columns">
+
+            <div class="footer-column" id="footer-column-links">
+                <h2><u>Quick Introduction</u></h2>
+                <div class="footer-links">
+                    <a href="RJT_Photography_Site.html">Home</a>
+                    <a href="#gallery">Gallery</a>
+                    <a href="#about">About</a>
+                    <a href="#services">Services</a>
+                    <a href="#contact">Contact</a>
+                </div>
+                
+            </div>
+
+            <div class="footer-column">
+              <h2><u>Social Links</u></h2>
+              <ul>
+
+                <li>
+                    <div class="logo-text">
+                        <img src="WebFiles/Instagram.png" alt="Instagram Logo" style="width: 30px; height: 30px;">
+                        <a href="https://www.instagram.com/_raymond_jt_77_/" target="_blank">Instagram(_raymond_jt_77_)</a>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="logo-text">
+                        <img src="WebFiles/Facebook.png" alt="Facebook Logo" style="width: 30px; height: 30px;">
+                        <a href="https://www.Facebook.com/raymondtilstone9" target="_blank">Facebook(Raymond Tilstone)</a>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="logo-text">
+                        <img src="WebFiles/LinkedIn.png" alt="LinkedIn Logo" style="width: 30px; height: 30px;">
+                        <a href="https://www.LinkedIn.com/in/raymond-tilstone-b013a1329/" target="_blank">LinkedIn(Raymond Tilstone)</a>
+                    </div>
+                </li>
+
+              </ul>
+            </div>
+
+            <div class="footer-column">
+              <h2><u>Contact Us</u></h2>
+              <p>Email: rjtilstone7@gmail.com</p> 
+              <p>Phone: 0634547847</p>
+              <p>Contact Form: <a href="RaymondJT-Portfolio-Contact Page.html">Link to Contact Form</a></p>
+            </div>
+
+          </div>
+
+          <div class="footer-bottom">
+            <p>Copyright &copy; 2025 RJT Photography. All rights reserved.</p>
+          </div>
+
+        </div>
+
+    </footer>
+
+    <script>
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const currentPage = 'RJT_Photography_Site.html'; 
+            const navLinks = document.querySelectorAll('.nav a');
+
+            navLinks.forEach(link => {
+                const href = link.getAttribute('href');
+
+                if (href === currentPage) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        const scrollRevealOption = {
+            distance: "50px",
+            origin: "bottom",
+            duration: 1000,
+        };
+
+        ScrollReveal().reveal(".about__container .section__header", {
+            ...scrollRevealOption,    
+        });
+        ScrollReveal().reveal(".about__container .section__description", {
+            ...scrollRevealOption,
+            delay: 500,
+            interval: 500,
+        });
+        ScrollReveal().reveal(".about__container img", {
+            ...scrollRevealOption,
+            delay: 1500,
+        });
+
+        ScrollReveal().reveal(".service__container .section__header", {
+            
+        });
+        ScrollReveal().reveal(".service__container .section__description", {
+            ...scrollRevealOption,
+            delay: 500,
+        });
+        ScrollReveal().reveal(".service__card", {
+            duration: 1000,
+            delay: 1000,
+            interval: 500,
+        });
+
+        const instagram = document.querySelector(".instagram__flex");
+
+        Array.from(instagram.children).forEach((item) => {
+        const duplicateNode = item.cloneNode(true);
+        duplicateNode.setAttribute("aria-hidden", true);
+        instagram.appendChild(duplicateNode);
+        });
+
+    </script>
+    
+</body>
+
+</html>

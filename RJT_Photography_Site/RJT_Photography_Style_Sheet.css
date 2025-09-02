@@ -1,0 +1,463 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+}
+
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: rgba(0, 0, 0, 0.885);
+    /* position: fixed; */
+    width: 100%;
+    top: 0; 
+    left: 0;
+
+}
+
+.btn {
+  padding: 0.75rem 1.5rem;
+  outline: none;
+  border: none;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--white);
+  background-color: var(--text-dark);
+  border-radius: 5px;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: var(--text-light);
+}
+
+.logo{
+    font-size: 24px;
+    color: white;
+    display: flex;
+    align-items: center;
+}
+
+.nav{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.nav li{
+    margin-left: 20px;
+}
+
+.nav a{
+    color: white;
+    text-decoration: none;
+    font-size: 1.3em;
+    margin-right: 50px;
+}
+
+.nav a:hover{
+    text-decoration: underline;
+}
+
+.nav a.active {
+    color: white;
+    background-color: rgba(0, 245, 147, 0.528);
+    display: inline-block;
+}
+
+.section__container {
+  max-width: var(--max-width);
+  margin: auto;
+  padding: 5rem 1rem;
+}
+
+.section__header {
+  margin-bottom: 1rem;
+  font-size: 2rem;
+  font-weight: 400;
+  font-family: var(--header-font);
+  color: var(--text-dark);
+  text-align: center;
+}
+
+.section__description {
+  color: var(--text-light);
+  line-height: 1.75rem;
+  text-align: center;
+}
+
+.about__container .section__description {
+  max-width: 900px;
+  margin-inline: auto;
+  margin-bottom: 2rem;
+}
+
+.about__container img {
+  display: block;       /* Removes inline spacing */
+  margin: 20px auto;    /* Centers horizontally */
+  max-width: 200px;     /* Optional: controls image size */
+  height: auto;         /* Maintains aspect ratio */
+}
+
+.gallery__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 images per row */
+  gap: 1.5rem;                            /* Spacing between images */
+  justify-content: center;               /* Center the grid horizontally */
+  align-items: center;                   /* Vertically align images */
+  margin: 0 auto;                        /* Center the grid container */
+  max-width: 1200px;                     /* Optional: limits gallery width */
+  padding: 2rem 1rem;                    /* Adds breathing room */
+}
+
+.gallery__grid img {
+  width: 300px;                          /* Fixed width */
+  height: 300px;                         /* Fixed height */
+  object-fit: cover;                     /* Crops image to fill box */
+  border-radius: 8px;                    /* Optional: rounded corners */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Optional: subtle shadow */
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  display: block;                        /* Removes inline spacing */
+  margin: 0 auto;                        /* Centers image horizontally */
+}
+
+
+.gallery__grid:hover img:not(:hover) {
+  opacity: 0.6;                          /* Slight fade for non-hovered images */
+}
+
+.gallery__grid img:hover {
+  transform: scale(1.05);               /* Slight zoom on hover */
+  opacity: 1;
+}
+
+.gallery__btn {
+  text-align: center;
+  background-color: black;
+  color: white;
+  width: 10%;
+  margin: auto;
+  transition: transform 0.3s ease;
+}
+.gallery__btn:hover {
+    background-color: rgb(60, 60, 60);
+    transform: scale(1.20)
+}
+
+.portfolio__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 columns */
+  gap: 2rem;                              /* Spacing between cards */
+  justify-content: center;               /* Center the grid horizontally */
+  align-items: center;                   /* Vertically align content */
+  max-width: 1200px;                     /* Optional: limits grid width */
+  margin: 0 auto;                        /* Center the grid container */
+  padding: 2rem 1rem;                    /* Adds breathing room */
+}
+
+
+.portfolio__card {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  color: white;
+}
+
+.portfolio__card img {
+  width: 100%;
+  height: 400px;                         /* Uniform height */
+  object-fit: cover;                     /* Ensures clean cropping */
+  display: block;
+}
+
+.portfolio__card:hover {
+  transform: scale(1.02);                /* Subtle zoom effect */
+}
+
+.portfolio__card::after {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 2rem;
+  font-family: var(--header-font);
+  color: var(--white);
+}
+
+.portfolio__card:nth-child(1)::after {
+  content: "Portraits";
+}
+
+.portfolio__card:nth-child(2)::after {
+  content: "Weddings";
+}
+
+.portfolio__card:nth-child(3)::after {
+  content: "Fashions";
+}
+
+.portfolio__content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 1;
+}
+
+
+.portfolio__card:hover .portfolio__content {
+  opacity: 1;
+}
+
+.service {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9)), url("assets/service.jpg");
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding: 1rem 1rem; /* Reduced height */
+}
+
+.service__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+  color: white;
+  margin-bottom: 1rem;
+}
+
+.service__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 cards side by side */
+  gap: 2rem;
+  justify-content: center;
+  align-items: start;
+  padding: 0 1rem;
+}
+
+.service__card {
+  background-color: rgba(255, 255, 255, 0.05); /* subtle card background */
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+}
+
+.service__card:hover {
+  transform: scale(1.03);
+}
+
+.service__card h4 {
+  position: relative;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  font-size: 1.75rem;
+  font-weight: 500;
+  font-family: var(--header-font);
+  color: white;
+}
+
+.service__card h4::after {
+  content: "~";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 2rem;
+  line-height: 0;
+  color: white;
+}
+
+.service__card p {
+  color: white;
+  font-size: 1rem;
+  line-height: 1.6rem;
+}
+
+.instagram__container {
+  overflow: hidden;
+}
+
+.instagram__flex {
+  margin-top: 2rem;
+  width: max-content;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+
+  animation: scroll 45s linear infinite;
+}
+
+.instagram__flex img {
+  /* Changes the size of the images in the instagram scroll section */
+  max-width: 200px;
+}
+
+@keyframes scroll {
+  to {
+    transform: translateX(calc(-50% - 0.5rem));
+  }
+}
+
+.footer {
+    background-image: url('WebFiles/FooterBackground1.png');
+    background-size: cover; /* Ensures the image covers the entire footer */
+    background-position: center; /* Centers the image */
+    color: white;
+    padding: 20px 0;
+    font-family: Arial, sans-serif;
+    margin-top: 5%;
+}
+
+.footer .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer-columns {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1200px;
+    margin-bottom: 20px;
+}
+
+.footer-column {
+    flex: 1;
+    padding: 0 20px;
+}
+
+.footer-column h2 {
+    margin-bottom: 10px;
+    font-weight: bold;
+    
+}
+
+.footer-column ul {
+    list-style: none ;
+    padding: 0  ;
+}
+
+.footer-column ul li {
+    margin-bottom: 5px  ;
+}
+
+.footer-column ul li a {
+    color: #0664df !important;
+    text-decoration: none ;
+}
+
+.footer-column ul li a:hover {
+    color: #551A8B !important;
+    text-decoration: underline ;
+
+}
+
+#footer-column-links {
+  text-align: center;
+}
+
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  font-size: 1.3rem;
+}
+
+.footer-links a {
+  margin-top: 3%;
+}
+
+.footer-bottom {
+    text-align: center;
+    border-top: 1px solid white;
+    padding-top: 10px;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.footer a {
+    color: #0664df;
+    text-decoration: none;
+}
+
+.footer a:hover {
+    color: #551A8B !important;
+    text-decoration: underline;
+} 
+
+.footer p {
+    color: white !important;
+}
+
+
+@media (max-width: 768px) {
+    .footer-columns {
+        flex-direction: column; /* Stack columns vertically on smaller screens */
+        align-items: center;
+    }
+
+    .footer-column {
+        width: 100%; /* Full width for each column */
+        margin-bottom: 20px; /* Add space between columns */
+    }
+}
+
+@media (max-width: 600px) { 
+    
+}
+
+@media (width > 540px) {
+  .portfolio__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .service__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .gallery__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (width > 768px) {
+  .portfolio__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .service__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .gallery__grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (width > 1024px) {
+  .portfolio__grid {
+    gap: 2rem;
+  }
+}
